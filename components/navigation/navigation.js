@@ -89,7 +89,6 @@ function Navigation(props) {
   const [warningOpen, setWarningOpen] = useState(false);
 
   function handleNavigate(route) {
-    console.log(route)
     router.push(route);
   }
 
@@ -161,7 +160,7 @@ function Navigation(props) {
           <HowToVoteIcon className={classes.icon} color={darkMode ? 'white' : 'rgb(33, 37, 41)'} altColor={darkMode ? 'rgb(33, 37, 41)' : 'white'} />,
           <HowToVoteIcon className={classes.icon} color={darkMode ? 'white' : 'rgb(33, 37, 41)'} altColor={darkMode ? 'rgb(33, 37, 41)' : 'white'} />,
         )}
-        
+
       </React.Fragment>
     );
   };
@@ -330,7 +329,7 @@ function Navigation(props) {
           <img src='/images/icon-warning.svg' className={ classes.warningIcon } onClick={ openWarning }/>
         </Tooltip>
       </div>
-      <Typography className={classes.smallVersion}>Version 0.1.1-beta</Typography>
+      <Typography className={classes.smallVersion}>Version 0.1.3-beta</Typography>
       { warningOpen &&
         <FFWarning close={ closeWarning } />
       }

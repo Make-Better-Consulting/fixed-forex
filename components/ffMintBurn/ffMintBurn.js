@@ -3,9 +3,6 @@ import { Typography, Paper, Grid, Button, TextField, InputAdornment, CircularPro
 import Skeleton from '@material-ui/lab/Skeleton';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
-import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceWalletOutlined';
-import TrendingUpIcon from '@material-ui/icons/TrendingUp';
-
 import BigNumber from 'bignumber.js';
 
 import { formatCurrency } from '../../utils';
@@ -17,7 +14,6 @@ export default function ffMintBurn() {
   const [ loading, setLoading ] = useState(false)
 
   const [ activeTab, setActiveTab ] = useState('deposit')
-
 
   const [ assets, setAssets ] = useState([])
 

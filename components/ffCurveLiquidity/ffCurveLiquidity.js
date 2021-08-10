@@ -1,47 +1,45 @@
 import React, { useState, useEffect } from 'react';
-import { Paper, Typography, Button, TextField, InputAdornment, CircularProgress, RadioGroup, Radio, FormControlLabel } from '@material-ui/core';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import { Paper, Typography, Button, TextField, InputAdornment, CircularProgress } from '@material-ui/core';
 import BigNumber from 'bignumber.js';
-import Skeleton from '@material-ui/lab/Skeleton';
-import moment from 'moment';
 import { formatCurrency } from '../../utils';
 import classes from './ffCurveLiquidity.module.css';
 import stores from '../../stores'
 import {
   ERROR,
-  FIXED_FOREX_UPDATED,
   MAX_UINT256,
   FIXED_FOREX_APPROVE_DEPOSIT_CURVE,
   FIXED_FOREX_DEPOSIT_CURVE_APPROVED,
   FIXED_FOREX_DEPOSIT_CURVE,
   FIXED_FOREX_CURVE_DEPOSITED,
   FIXED_FOREX_WITHDRAW_CURVE,
-  FIXED_FOREX_CURVE_WITHDRAWN
+  FIXED_FOREX_CURVE_WITHDRAWN,
+  FIXED_FOREX_GET_SLIPPAGE_INFO,
+  FIXED_FOREX_SLIPPAGE_INFO_RETURNED,
 } from '../../stores/constants';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import SlippageInfo from './slippageInfo'
 
 export default function ffCurveLiquidity({ asset }) {
-
-  console.log(asset)
 
   const [ approvalLoading0, setApprovalLoading0 ] = useState(false)
   const [ approvalLoading1, setApprovalLoading1 ] = useState(false)
   const [ depositLoading, setDepositLoading ] = useState(false)
 
   const [ amount0, setAmount0 ] = useState('');
-  const [ amount0Error, setAmount0Error ] = useState(false);
+  const [ amount0Error/*, setAmount0Error*/ ] = useState(false);
   const [ amount1, setAmount1 ] = useState('');
-  const [ amount1Error, setAmount1Error ] = useState(false);
+  const [ amount1Error/*, setAmount1Error*/ ] = useState(false);
 
   const [ withdrawAmount, setWithdrawAmount ] = useState('');
-  const [ withdrawAmountError, setWithdrawAmountError ] = useState(false);
+  const [ withdrawAmountError/*, setWithdrawAmountError*/ ] = useState(false);
   const [ withdrawAmount0, setWithdrawAmount0 ] = useState('');
-  const [ withdrawAmount0Error, setWithdrawAmount0Error ] = useState(false);
+  const [ withdrawAmount0Error/*, setWithdrawAmount0Error*/ ] = useState(false);
   const [ withdrawAmount1, setWithdrawAmount1 ] = useState('');
-  const [ withdrawAmount1Error, setWithdrawAmount1Error ] = useState(false);
+  const [ withdrawAmount1Error/*, setWithdrawAmount1Error*/ ] = useState(false);
 
   const [ withdrawAmount0Percent, setWithdrawAmount0Percent ] = useState('');
   const [ withdrawAmount1Percent, setWithdrawAmount1Percent ] = useState('');
+
+  const [ slippageInfo, setSlippageInfo ] = useState(0)
 
   const [ activeTab, setActiveTab ] = useState('deposit')
 
@@ -61,23 +59,35 @@ export default function ffCurveLiquidity({ asset }) {
       setApprovalLoading1(false)
     }
 
+    const slippageInfoReturned = (info) => {
+      setSlippageInfo(info)
+    }
+
     stores.emitter.on(FIXED_FOREX_DEPOSIT_CURVE_APPROVED, approveReturned);
     stores.emitter.on(FIXED_FOREX_CURVE_DEPOSITED, depositReturned);
     stores.emitter.on(FIXED_FOREX_CURVE_WITHDRAWN, depositReturned);
+    stores.emitter.on(FIXED_FOREX_SLIPPAGE_INFO_RETURNED, slippageInfoReturned);
     stores.emitter.on(ERROR, errorReturned);
     return () => {
       stores.emitter.removeListener(FIXED_FOREX_DEPOSIT_CURVE_APPROVED, approveReturned);
       stores.emitter.removeListener(FIXED_FOREX_CURVE_DEPOSITED, depositReturned);
       stores.emitter.removeListener(FIXED_FOREX_CURVE_WITHDRAWN, depositReturned);
+      stores.emitter.removeListener(FIXED_FOREX_SLIPPAGE_INFO_RETURNED, slippageInfoReturned);
       stores.emitter.removeListener(ERROR, errorReturned);
     };
   }, []);
 
   const setAmountPercent = (input, percent) => {
     if(input === 'amount0') {
-      setAmount0(BigNumber(asset.gauge.coin0.balance).times(percent).div(100).toFixed(asset.gauge.coin0.decimals));
+      let am = BigNumber(asset.gauge.coin0.balance).times(percent).div(100).toFixed(asset.gauge.coin0.decimals)
+      setAmount0(am);
+      stores.dispatcher.dispatch({ type: FIXED_FOREX_GET_SLIPPAGE_INFO, content: { asset, amount0: am, amount1 } })
+
     } else if (input === 'amount1') {
-      setAmount1(BigNumber(asset.gauge.coin1.balance).times(percent).div(100).toFixed(asset.gauge.coin1.decimals));
+      let am = BigNumber(asset.gauge.coin1.balance).times(percent).div(100).toFixed(asset.gauge.coin1.decimals)
+      setAmount1(am);
+      stores.dispatcher.dispatch({ type: FIXED_FOREX_GET_SLIPPAGE_INFO, content: { asset, amount0, amount1: am } })
+
     } else if (input === 'withdraw') {
       let am = BigNumber(asset.gauge.userPoolBalance).times(percent).div(100).toFixed(18)
       setWithdrawAmount(am);
@@ -199,6 +209,7 @@ export default function ffCurveLiquidity({ asset }) {
                     error={amount0Error}
                     onChange={(e) => {
                       setAmount0(e.target.value);
+                      stores.dispatcher.dispatch({ type: FIXED_FOREX_GET_SLIPPAGE_INFO, content: { asset, amount0: e.target.value, amount1 } })
                     }}
                     InputProps={{
                       startAdornment: (
@@ -235,6 +246,7 @@ export default function ffCurveLiquidity({ asset }) {
                     error={amount1Error}
                     onChange={(e) => {
                       setAmount1(e.target.value);
+                      stores.dispatcher.dispatch({ type: FIXED_FOREX_GET_SLIPPAGE_INFO, content: { asset, amount0, amount1: e.target.value } })
                     }}
                     InputProps={{
                       startAdornment: (
@@ -252,16 +264,7 @@ export default function ffCurveLiquidity({ asset }) {
                 </div>
               </div>
               <div className={classes.textField}>
-                <div className={classes.inputTitle}>
-                  <Typography variant="h5" className={ classes.inputTitleText }>
-                    Estimated Receive Amount:
-                  </Typography>
-                </div>
-                <div className={classes.inputTitle}>
-                  <Typography variant="h5" className={ classes.inputTitleText }>
-                    Slippage:
-                  </Typography>
-                </div>
+                <SlippageInfo slippagePcent={slippageInfo} />
               </div>
             </>
           }

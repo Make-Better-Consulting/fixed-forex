@@ -4,18 +4,13 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import Skeleton from '@material-ui/lab/Skeleton';
 import { useRouter } from "next/router";
 
-import { formatCurrency } from '../../utils';
 import classes from './ffLPOptions.module.css';
-
-import stores from '../../stores'
-import { FIXED_FOREX_UPDATED } from '../../stores/constants';
 
 export default function ffLPOptions({ asset }) {
 
   const router = useRouter();
 
   const localNav = (screen) => {
-    console.log(router)
     router.push(`${router.asPath}/${screen}`)
   }
 
