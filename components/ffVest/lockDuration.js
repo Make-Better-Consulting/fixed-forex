@@ -16,7 +16,7 @@ export default function ffLockDuration({ ibff, veIBFF }) {
 
   const [ lockLoading, setLockLoading ] = useState(false)
 
-  const [selectedDate, setSelectedDate] = useState(moment().add(7, 'days').format('YYYY-MM-DD'));
+  const [selectedDate, setSelectedDate] = useState(moment().add(8, 'days').format('YYYY-MM-DD'));
   const [selectedDateError, setSelectedDateError] = useState(false);
   const [selectedValue, setSelectedValue] = useState('week');
 
@@ -36,6 +36,13 @@ export default function ffLockDuration({ ibff, veIBFF }) {
     };
   }, []);
 
+  useEffect(() => {
+    if(veIBFF.vestingInfo.lockEnds) {
+      setSelectedDate(moment.unix(veIBFF.vestingInfo.lockEnds).format('YYYY-MM-DD'))
+      setSelectedValue(null)
+    }
+  }, [ veIBFF ])
+
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
     setSelectedValue(null);
@@ -47,7 +54,7 @@ export default function ffLockDuration({ ibff, veIBFF }) {
     let days = 0;
     switch (event.target.value) {
       case 'week':
-        days = 7;
+        days = 8;
         break;
       case 'month':
         days = 30;
@@ -60,7 +67,7 @@ export default function ffLockDuration({ ibff, veIBFF }) {
         break;
       default:
     }
-    const newDate = moment().add(days, 'days').format('YYYY-MM-DD');
+    const newDate = moment.unix(veIBFF.vestingInfo.lockEnds).add(days, 'days').format('YYYY-MM-DD');
 
     setSelectedDate(newDate);
   }
