@@ -6,7 +6,7 @@ import { formatCurrency } from '../../utils';
 import classes from './ffClaimCurveGauge.module.css';
 
 import stores from '../../stores'
-import { FIXED_FOREX_CLAIM_CURVE_REWARDS, FIXED_FOREX_CURVE_REWARD_CLAIMED } from '../../stores/constants';
+import { ERROR, FIXED_FOREX_CLAIM_CURVE_REWARDS, FIXED_FOREX_CURVE_REWARD_CLAIMED } from '../../stores/constants';
 
 export default function ffClaimCurveGauge({ asset }) {
 
@@ -18,8 +18,10 @@ export default function ffClaimCurveGauge({ asset }) {
     }
 
     stores.emitter.on(FIXED_FOREX_CURVE_REWARD_CLAIMED, rewardClaimed);
+    stores.emitter.on(ERROR, rewardClaimed);
     return () => {
       stores.emitter.removeListener(FIXED_FOREX_CURVE_REWARD_CLAIMED, rewardClaimed);
+      stores.emitter.removeListener(ERROR, rewardClaimed);
     };
   }, []);
 
@@ -37,35 +39,35 @@ export default function ffClaimCurveGauge({ asset }) {
         <div className={ classes.lpOption } onClick={ () => { claim() } }>
         <Grid container spacing={2}>
           <Grid item lg={4} md={4} xs={12}>
-          <div className={ classes.lpOptionTitle }>
-            <img className={ classes.lpOptionIcon } src='/images/ff-icon.svg' alt='FF Logo' width={ 60 } height={ 60 } />
-            <div>
-              <Typography className={ classes.lpOptionName }>Fixed Forex</Typography>
-              <Typography className={ classes.lpOptionDescription }>Gauge Rewards</Typography>
+            <div className={ classes.lpOptionTitle }>
+              <img className={ classes.lpOptionIcon } src='/images/Curve.png' alt='FF Logo' width={ 60 } height={ 60 } />
+              <div>
+                <Typography className={ classes.lpOptionName }>Curve</Typography>
+                <Typography className={ classes.lpOptionDescription }>Gauge Rewards</Typography>
+              </div>
             </div>
-          </div>
           </Grid>
           <Grid item lg={4} md={4} xs={12}>
-          <div>
-            <Typography className={ classes.amountText }>{ formatCurrency(asset && asset.gauge ? asset.gauge.earned : 0) } ibff</Typography>
-          </div>
+            <div>
+              <Typography className={ classes.amountText }>{ formatCurrency(asset && asset.gauge ? asset.gauge.earned : 0) } CRV</Typography>
+            </div>
           </Grid>
           <Grid item lg={4} md={4} xs={12}>
-          <div>
-            { BigNumber(asset && asset.gauge ? asset.gauge.earned : 0).gt(0) &&
-              <Typography>Claim Now</Typography>
-            }
-            { !BigNumber(asset && asset.gauge ? asset.gauge.earned : 0).gt(0) &&
-              <Typography>Stake in gauge to earn rewards</Typography>
-            }
-          </div>
+            <div className={ classes.center}>
+              { BigNumber(asset && asset.gauge ? asset.gauge.earned : 0).gt(0) &&
+                <Typography>Claim Now</Typography>
+              }
+              { !BigNumber(asset && asset.gauge ? asset.gauge.earned : 0).gt(0) &&
+                <Typography>Stake in gauge to earn rewards</Typography>
+              }
+            </div>
           </Grid>
-          </Grid>
-          { BigNumber(asset && asset.gauge ? asset.gauge.earned : 0).gt(0) &&
-            <div className={ classes.activeIcon }></div>
-          }
-        </div>
-      </Paper>
-    </div>
+        </Grid>
+        { BigNumber(asset && asset.gauge ? asset.gauge.earned : 0).gt(0) &&
+          <div className={ classes.activeIcon }></div>
+        }
+      </div>
+    </Paper>
+  </div>
   );
 }

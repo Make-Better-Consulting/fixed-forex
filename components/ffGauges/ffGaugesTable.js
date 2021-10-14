@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { lighten, makeStyles, withStyles } from '@material-ui/core/styles';
 import Skeleton from '@material-ui/lab/Skeleton';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, Typography, Slider } from '@material-ui/core';
+import BigNumber from 'bignumber.js';
 
 import { formatCurrency } from '../../utils';
 
@@ -220,6 +221,9 @@ const useStyles = makeStyles((theme) => ({
   },
   imgLogo: {
     marginRight: '12px'
+  },
+  tableContainer: {
+    overflowX: 'hidden'
   }
 }));
 
@@ -268,13 +272,19 @@ export default function EnhancedTable({ gauges, setParentSliderValues, defaultVo
 
   return (
     <div className={classes.root}>
-      <TableContainer>
+      <TableContainer className={ classes.tableContainer }>
         <Table className={classes.table} aria-labelledby="tableTitle" size={'medium'} aria-label="enhanced table">
           <EnhancedTableHead classes={classes} order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
           <TableBody>
             {stableSort(gauges, getComparator(order, orderBy)).map((row) => {
               if (!row) {
                 return null;
+              }
+              let sliderValue = sliderValues.find((el) => el.address === row.gauge.poolAddress)?.value
+              if(BigNumber(sliderValue).gt(0)) {
+                sliderValue = BigNumber(sliderValue).toNumber(0)
+              } else {
+                sliderValue = 0
               }
 
               return (
@@ -302,7 +312,7 @@ export default function EnhancedTable({ gauges, setParentSliderValues, defaultVo
                   </TableCell>
                   <TableCell className={classes.cell} align="right">
                     <Typography variant="h2" className={classes.textSpaced}>
-                      { formatCurrency(row?.gauge?.votes) } veIBFF
+                      { formatCurrency(row?.gauge?.votes) } vKP3R
                     </Typography>
                     <Typography variant="h5" className={classes.textSpaced} color='textSecondary'>
                       { formatCurrency(row?.gauge?.votePercent) } %
@@ -310,14 +320,14 @@ export default function EnhancedTable({ gauges, setParentSliderValues, defaultVo
                   </TableCell>
                   <TableCell className={classes.cell} align="right">
                     <Typography variant="h2" className={classes.textSpaced}>
-                      { formatCurrency(row?.gauge?.userVotes) } veIBFF
+                      { formatCurrency(row?.gauge?.userVotes) } vKP3R
                     </Typography>
                     <Typography variant="h5" className={classes.textSpaced} color='textSecondary'>
                       { formatCurrency(row?.gauge?.userVotePercent) } %
                     </Typography>
                   </TableCell>
                   <TableCell className={classes.cell} align="right">
-                    <PrettoSlider valueLabelDisplay="auto" aria-label="Vote Precednt" value={ sliderValues.find((el) => el?.gauge?.address === row.address)?.value } onChange={ (event, value) => { onSliderChange(event, value, row) } } />
+                    <PrettoSlider valueLabelDisplay="auto" aria-label="Vote Precednt" value={ sliderValue } onChange={ (event, value) => { onSliderChange(event, value, row) } } />
                   </TableCell>
                 </TableRow>
               );

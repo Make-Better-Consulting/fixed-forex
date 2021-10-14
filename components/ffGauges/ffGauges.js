@@ -19,11 +19,10 @@ export default function ffGauges() {
     const forexUpdated = () => {
       const as = stores.fixedForexStore.getStore('assets');
       setGauges(as)
-
       setVotes(as.map((asset) => {
         return {
           address: asset.gauge.poolAddress,
-          value: parseInt((asset && asset.gauge && asset.gauge.userVotePercent) ? asset.gauge.userVotePercent : 0)
+          value: BigNumber((asset && asset.gauge && asset.gauge.userVotePercent) ? asset.gauge.userVotePercent : 0).toNumber(0)
         }
       }))
 
@@ -34,7 +33,7 @@ export default function ffGauges() {
     setVotes(as.map((asset) => {
       return {
         address: asset.gauge.poolAddress,
-        value: parseInt((asset && asset.gauge && asset.gauge.userVotePercent) ? asset.gauge.userVotePercent : 0)
+        value: BigNumber((asset && asset.gauge && asset.gauge.userVotePercent) ? asset.gauge.userVotePercent : 0).toNumber(0)
       }
     }))
 
@@ -72,7 +71,7 @@ export default function ffGauges() {
           variant='contained'
           size='large'
           color='primary'
-          disabled={ voteLoading }
+          disabled={ voteLoading || BigNumber(totalVotes).eq(0) || BigNumber(totalVotes).gt(100) }
           onClick={ onVote }
           >
           <Typography className={ classes.actionButtonText }>{ voteLoading ? `Casting Votes` : `Cast Votes` }</Typography>

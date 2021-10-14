@@ -2,7 +2,6 @@
   width: calc(100% - 48px);
   max-width: 1356px;
   margin: 0 auto;
-  margin-bottom: -148px;
   position: relative;
   top: -240px;
 }
@@ -65,7 +64,11 @@
   top: 12px;
 }
 
-
+.center {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
 
 .lpOption:nth-child(1):hover > div {
   color: #fff !important;

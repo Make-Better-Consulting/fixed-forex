@@ -16,6 +16,9 @@ import TimerIcon from '@material-ui/icons/Timer';
 import HowToVoteIcon from '@material-ui/icons/HowToVote';
 import SpaceBarIcon from '@material-ui/icons/SpaceBar';
 import WarningIcon from '@material-ui/icons/Warning';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import TableChartIcon from '@material-ui/icons/TableChart';
+import BuildIcon from '@material-ui/icons/Build';
 
 import { SvgIcon } from "@material-ui/core";
 
@@ -129,41 +132,98 @@ function Navigation(props) {
     return (
       <React.Fragment>
         {renderNav(
-          'Assets',
-          'home',
-          <SwapHorizIcon className={classes.icon} color={darkMode ? 'white' : 'rgb(33, 37, 41)'} altColor={darkMode ? 'rgb(33, 37, 41)' : 'white'} />,
-          <SwapHorizIcon className={classes.icon} color={darkMode ? 'white' : 'rgb(33, 37, 41)'} altColor={darkMode ? 'rgb(33, 37, 41)' : 'white'} />,
+          'Mint Assets',
+          'mint',
+        )}
+        {renderSectionHeader(
+          'Liquidity Providing'
         )}
         <div className={ classes.subAssets }>
           {renderSubNav(
-            'ibEUR',
-            'asset/0x96E61422b6A9bA0e068B6c5ADd4fFaBC6a4aae27/curve',
-            <img className={classes.subIcon} src="https://raw.githubusercontent.com/iearn-finance/yearn-assets/master/icons/tokens/0x96E61422b6A9bA0e068B6c5ADd4fFaBC6a4aae27/logo-128.png" alt="" height="30px" width="30px" />,
-            <img className={classes.subIcon} src="https://raw.githubusercontent.com/iearn-finance/yearn-assets/master/icons/tokens/0x96E61422b6A9bA0e068B6c5ADd4fFaBC6a4aae27/logo-128.png" alt="" height="30px" width="30px" />,
+            'CRV LP',
+            'home',
           )}
           {renderSubNav(
-            'ibKRW',
-            'asset/0x95dFDC8161832e4fF7816aC4B6367CE201538253/curve',
-            <img className={classes.subIcon}  src="https://raw.githubusercontent.com/iearn-finance/yearn-assets/master/icons/tokens/0x95dFDC8161832e4fF7816aC4B6367CE201538253/logo-128.png" alt="" height="30px" width="30px" />,
-            <img className={classes.subIcon}  src="https://raw.githubusercontent.com/iearn-finance/yearn-assets/master/icons/tokens/0x95dFDC8161832e4fF7816aC4B6367CE201538253/logo-128.png" alt="" height="30px" width="30px" />,
+            'Uniswap LP',
+            'staking',
+          )}
+          {renderSubNav(
+            'Withdraw Inactive',
+            'withdraw',
           )}
         </div>
-        {renderNav(
-          'Vest',
-          'vest',
-          <TimerIcon className={classes.icon} color={darkMode ? 'white' : 'rgb(33, 37, 41)'} altColor={darkMode ? 'rgb(33, 37, 41)' : 'white'} />,
-          <TimerIcon className={classes.icon} color={darkMode ? 'white' : 'rgb(33, 37, 41)'} altColor={darkMode ? 'rgb(33, 37, 41)' : 'white'} />,
+        {renderSectionHeader(
+          'Rewards'
         )}
-        {renderNav(
-          'Vote',
-          'vote',
-          <HowToVoteIcon className={classes.icon} color={darkMode ? 'white' : 'rgb(33, 37, 41)'} altColor={darkMode ? 'rgb(33, 37, 41)' : 'white'} />,
-          <HowToVoteIcon className={classes.icon} color={darkMode ? 'white' : 'rgb(33, 37, 41)'} altColor={darkMode ? 'rgb(33, 37, 41)' : 'white'} />,
+        <div className={ classes.subAssets }>
+          {renderSubNav(
+            'rKP3R Options',
+            'options',
+          )}
+          {renderSubNav(
+            'Claim',
+            'rewards',
+          )}
+        </div>
+        {renderSectionHeader(
+          'Governance'
         )}
-
+        <div className={ classes.subAssets }>
+          {renderSubNav(
+            'Vest',
+            'vest',
+          )}
+          {renderSubNav(
+            'Vote',
+            'vote',
+          )}
+        </div>
       </React.Fragment>
     );
   };
+
+  /*
+
+  <div className={ classes.subAssets }>
+    {renderSubNav(
+      'ibAUD',
+      'asset/0x3F1B0278A9ee595635B61817630cC19DE792f506/curve',
+      <img className={classes.subIcon}  src="https://raw.githubusercontent.com/iearn-finance/yearn-assets/master/icons/tokens/0x3F1B0278A9ee595635B61817630cC19DE792f506/logo-128.png" alt="" height="30px" width="30px" />,
+      <img className={classes.subIcon}  src="https://raw.githubusercontent.com/iearn-finance/yearn-assets/master/icons/tokens/0x3F1B0278A9ee595635B61817630cC19DE792f506/logo-128.png" alt="" height="30px" width="30px" />,
+    )}
+    {renderSubNav(
+      'ibCHF',
+      'asset/0x9c2C8910F113181783c249d8F6Aa41b51Cde0f0c/curve',
+      <img className={classes.subIcon}  src="https://raw.githubusercontent.com/iearn-finance/yearn-assets/master/icons/tokens/0x9c2C8910F113181783c249d8F6Aa41b51Cde0f0c/logo-128.png" alt="" height="30px" width="30px" />,
+      <img className={classes.subIcon}  src="https://raw.githubusercontent.com/iearn-finance/yearn-assets/master/icons/tokens/0x9c2C8910F113181783c249d8F6Aa41b51Cde0f0c/logo-128.png" alt="" height="30px" width="30px" />,
+    )}
+    {renderSubNav(
+      'ibEUR',
+      'asset/0x96E61422b6A9bA0e068B6c5ADd4fFaBC6a4aae27/curve',
+      <img className={classes.subIcon} src="https://raw.githubusercontent.com/iearn-finance/yearn-assets/master/icons/tokens/0x96E61422b6A9bA0e068B6c5ADd4fFaBC6a4aae27/logo-128.png" alt="" height="30px" width="30px" />,
+      <img className={classes.subIcon} src="https://raw.githubusercontent.com/iearn-finance/yearn-assets/master/icons/tokens/0x96E61422b6A9bA0e068B6c5ADd4fFaBC6a4aae27/logo-128.png" alt="" height="30px" width="30px" />,
+    )}
+    {renderSubNav(
+      'ibGBP',
+      'asset/0xD6Ac1CB9019137a896343Da59dDE6d097F710538/curve',
+      <img className={classes.subIcon}  src="https://raw.githubusercontent.com/iearn-finance/yearn-assets/master/icons/tokens/0xD6Ac1CB9019137a896343Da59dDE6d097F710538/logo-128.png" alt="" height="30px" width="30px" />,
+      <img className={classes.subIcon}  src="https://raw.githubusercontent.com/iearn-finance/yearn-assets/master/icons/tokens/0xD6Ac1CB9019137a896343Da59dDE6d097F710538/logo-128.png" alt="" height="30px" width="30px" />,
+    )}
+    {renderSubNav(
+      'ibJPY',
+      'asset/0x8818a9bb44Fbf33502bE7c15c500d0C783B73067/curve',
+      <img className={classes.subIcon}  src="https://raw.githubusercontent.com/iearn-finance/yearn-assets/master/icons/tokens/0x8818a9bb44Fbf33502bE7c15c500d0C783B73067/logo-128.png" alt="" height="30px" width="30px" />,
+      <img className={classes.subIcon}  src="https://raw.githubusercontent.com/iearn-finance/yearn-assets/master/icons/tokens/0x8818a9bb44Fbf33502bE7c15c500d0C783B73067/logo-128.png" alt="" height="30px" width="30px" />,
+    )}
+    {renderSubNav(
+      'ibKRW',
+      'asset/0x95dFDC8161832e4fF7816aC4B6367CE201538253/curve',
+      <img className={classes.subIcon}  src="https://raw.githubusercontent.com/iearn-finance/yearn-assets/master/icons/tokens/0x95dFDC8161832e4fF7816aC4B6367CE201538253/logo-128.png" alt="" height="30px" width="30px" />,
+      <img className={classes.subIcon}  src="https://raw.githubusercontent.com/iearn-finance/yearn-assets/master/icons/tokens/0x95dFDC8161832e4fF7816aC4B6367CE201538253/logo-128.png" alt="" height="30px" width="30px" />,
+    )}
+  </div>
+
+  */
 
   const openWarning = () => {
     setWarningOpen(true)
@@ -174,7 +234,18 @@ function Navigation(props) {
     setWarningOpen(false)
   }
 
-  const renderNav = (title, link, icon, iconSelected) => {
+  const renderSectionHeader = (title) => {
+    return (
+      <div
+        className={classes.navigationOptionContainer}
+      >
+        <div className={classes.navigationOptionNotSelected}></div>
+        <Typography variant="h2" className={ classes.sectionText}>{title}</Typography>
+      </div>
+    );
+  };
+
+  const renderNav = (title, link) => {
     return (
       <div
         className={classes.navigationOptionContainer}
@@ -187,13 +258,12 @@ function Navigation(props) {
         ) : (
           <div className={classes.navigationOptionNotSelected}></div>
         )}
-        {activePath.includes('/' + link) ? iconSelected : icon}
         <Typography variant="h2">{title}</Typography>
       </div>
     );
   };
 
-  const renderSubNav = (title, link, icon, iconSelected) => {
+  const renderSubNav = (title, link) => {
     return (
       <div
         className={classes.navigationSubOptionContainer}
@@ -206,7 +276,6 @@ function Navigation(props) {
         ) : (
           <div className={classes.navigationOptionNotSelected}></div>
         )}
-        {activePath.includes('/' + link) ? iconSelected : icon}
         <Typography variant="h2" className={ classes.subtitleText}>{title}</Typography>
       </div>
     );
@@ -329,7 +398,7 @@ function Navigation(props) {
           <img src='/images/icon-warning.svg' className={ classes.warningIcon } onClick={ openWarning }/>
         </Tooltip>
       </div>
-      <Typography className={classes.smallVersion}>Version 0.1.4-beta</Typography>
+      <Typography className={classes.smallVersion}>Version 0.6.0-beta</Typography>
       { warningOpen &&
         <FFWarning close={ closeWarning } />
       }
