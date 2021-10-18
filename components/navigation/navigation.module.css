@@ -34,7 +34,7 @@ a.linkz { cursor: pointer !important; }
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .ffTitle {
@@ -173,7 +173,6 @@ a.linkz { cursor: pointer !important; }
   padding: 0px 0px;
   width: 100%;
   cursor: pointer;
-  /* background: red; */
 }
 
 .subAssets {
@@ -299,6 +298,7 @@ a.linkz { cursor: pointer !important; }
     position: relative;
     min-height: 80px;
     display: flex;
+    top: 0;
     width: 100%;
     padding: 24px 12px;
     border-radius: 0px !important;
@@ -317,7 +317,7 @@ a.linkz { cursor: pointer !important; }
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    padding: 40px;
+    padding: 20px;
     height: 100vh;
     z-index: 9;
     align-items: center;
@@ -325,12 +325,13 @@ a.linkz { cursor: pointer !important; }
   }
   .menuIcon {
     position: absolute;
-    top: 35px;
+    top: 15px;
     right: 30px;
     display: flex;
   }
   .navigationHeading {
     width: 100%;
+    display: block;
   }
   .headerThings {
     width: 100%;

@@ -210,6 +210,7 @@ function Header(props) {
         </SvgIcon>
         </a>
 
+
         <div className={classes.themeSelectContainer}>
           <StyledSwitch
             icon={<Brightness2Icon className={classes.switchIcon} />}
@@ -218,16 +219,24 @@ function Header(props) {
             onChange={handleToggleChange}
           />
         </div>
-        <Button
-          disableElevation
-          className={classes.prettyButton}
-          variant="contained"
-          startIcon={<MonetizationOnIcon />}
-          onClick={() => callClaim()}
-          disabled={ loading }
-        >
-          <Typography className={classes.headBtnTxt}>Claim { claimable == undefined ? 0 : parseFloat(claimable).toFixed(0) } vKP3R</Typography>
-        </Button>
+
+        {account && account.address ?
+          <div>
+          <Button
+            disableElevation
+            className={classes.prettyButton}
+            variant="contained"
+            startIcon={<MonetizationOnIcon />}
+            onClick={() => callClaim()}
+            disabled={ loading }
+          >
+            <Typography className={classes.headBtnTxt}>Claim { claimable == undefined ? 0 : parseFloat(claimable).toFixed(0) } vKP3R</Typography>
+          </Button>
+          </div>
+           :
+           <div>&nbsp;</div>
+         }
+
         <Button
           disableElevation
           className={classes.accountButton}
