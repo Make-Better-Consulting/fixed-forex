@@ -6,11 +6,10 @@ import Overview from '../../components/ffOverview';
 import Assets from '../../components/ffAssets';
 
 import React, { useState, useEffect } from 'react';
-import { CONNECT_WALLET, ACCOUNT_CONFIGURED, ACCOUNT_CHANGED, FIXED_FOREX_BALANCES_RETURNED, FIXED_FOREX_CLAIM_VECLAIM, FIXED_FOREX_VECLAIM_CLAIMED, FIXED_FOREX_UPDATED, ERROR } from '../../stores/constants';
+import { CONNECT_WALLET, ACCOUNT_CONFIGURED } from '../../stores/constants';
 import stores from '../../stores';
 import { useRouter } from "next/router";
 import Unlock from '../../components/unlock';
-import { formatAddress } from '../../utils';
 
 
 import classes from './home.module.css';
@@ -64,13 +63,8 @@ function Home({ changeTheme }) {
       </Head>
       <div className={classes.ffContainer}>
 
-
-
-      {unlockOpen && <Unlock modalOpen={unlockOpen} closeModal={closeUnlock} />}
-
-
         {account && account.address ?
-          <div>
+          <div className={classes.connected}>
             <Overview />
             <Assets />
           </div>
@@ -79,7 +73,7 @@ function Home({ changeTheme }) {
            <BalanceIcon className={ classes.overviewIcon } />
            <Typography className={classes.mainHeading} variant='h1'>Curve Liquidity Pools</Typography>
            <Typography className={classes.mainDesc} variant='body2'>
-             Supply Collateral to Borrow Iron Bank Assets. Fixed Forex provides an alternative to USD denominated stable coins. It allows liquidity providers exposure to currencies such as EUR, KRW, GBP, CHF, AUD, and JPY.
+             Earn Rewards. Providing liquidity to these LP’s allows you to hedge against USD risk, or simply have exposure in your own preferred currency, while earning LP incentives.
            </Typography>
            <Button
              disableElevation
@@ -91,6 +85,7 @@ function Home({ changeTheme }) {
            </Button>
            </Paper>
          }
+         {unlockOpen && <Unlock modalOpen={unlockOpen} closeModal={closeUnlock} />}
 
       </div>
     </Layout>
