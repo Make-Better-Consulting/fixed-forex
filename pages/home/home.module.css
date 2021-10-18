@@ -9,6 +9,21 @@
   position: relative;
 }
 
+.mainHeading {
+  margin: 50px auto 0px auto !important;
+  text-align: left !important;
+  font-size: 20px !important;
+  width: calc(100% - 180px) !important;
+}
+
+.mainDesc {
+  margin: 20px auto 0px auto !important;
+  text-align: left !important;
+  color: rgb(104,108,122);
+  font-size: 14px !important;
+  width: calc(100% - 180px) !important;
+}
+
 @media screen and (max-width: 1600px) {
 
 }

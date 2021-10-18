@@ -7,11 +7,20 @@
   min-height: 60px;
   position: fixed;
   top: 0;
+  left: 0;
   z-index: 10;
-  width: calc(100% - 210px);
+  width: calc(100%);
   border: 0;
   border-radius: 0 !important;
   border-bottom: 1px solid rgba(128, 128, 128, 0.2) !important;
+}
+
+.yearnLogo {
+  width: 120px !important;
+  height: 21px !important;
+  left: 20px;
+  top: 18px;
+  position: absolute;
 }
 
 .intro {
@@ -69,10 +78,24 @@
   font-weight: 700 !important;
   font-size: 12px !important;
   margin-left: 14px !important;
-  background-image: linear-gradient(90deg ,#1c46f5 0,#0005d3) !important;
+  background: linear-gradient(-45deg, #23a6d5, #234ce7);
+	background-size: 200% 200%;
+	animation: gradient 35s ease infinite;
   color: #fff !important;
   -webkit-transition: background-image 1s ease-in-out;
   transition: background-image 1s ease-in-out;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 .prettyButton:hover {
@@ -108,12 +131,13 @@
 }
 
 .themeSelectContainer {
-
+  /* position: absolute;
+  left: 150px; */
 }
 
 .switchIcon {
-  font-size: 1.2rem !important;
-  margin-top: 0.35rem;
+  font-size: 1rem !important;
+  margin-top: 0.275rem;
   color: rgba(108,108,123, 1);
 }
 

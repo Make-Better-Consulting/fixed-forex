@@ -305,6 +305,31 @@ function Lend({ changeTheme }) {
   return (
     <Layout changeTheme={changeTheme}>
       <div className={classes.ffContainer}>
+
+      <Typography className={classes.mainHeading} variant='h1'>Mint Assets</Typography>
+      <Typography className={classes.mainDesc} variant='body2'>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.
+      </Typography>
+
+      <Paper className={classes.lendingFilters}>
+        <TextField
+          className={classes.searchContainer}
+          fullWidth
+          placeholder="Yearn 3CRV, DefiDollar, ..."
+          value={search}
+          onChange={onSearchChanged}
+
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+            disableUnderline: true
+          }}
+        />
+      </Paper>
+
         <Overview />
 
         {supplyAssets.length > 0 && (
@@ -342,23 +367,7 @@ function Lend({ changeTheme }) {
           </div>
         )}
         <div className={ (supplyAssets.length === 0 && borrowAssets.length === 0) ? classes.firstContainer : classes.container }>
-          <Paper className={classes.lendingFilters}>
-            <TextField
-              className={classes.searchContainer}
-              variant="outlined"
-              fullWidth
-              placeholder="Yearn 3CRV, DefiDollar, ..."
-              value={search}
-              onChange={onSearchChanged}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </Paper>
+
           <Paper elevation={0} className={classes.lendingTable}>
             <TableContainer>
               <Table className={classes.investTable} aria-labelledby="tableTitle" size="medium" aria-label="enhanced table">

@@ -139,17 +139,17 @@ class MySnackbar extends Component {
       <Snackbar
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'left',
+          horizontal: 'center',
         }}
         open={this.state.open}
-        autoHideDuration={6000}
+        autoHideDuration={16000}
         onClose={this.handleClose}
+        style={{ border: '8px solid ' + color, borderRadius: '18px', }}
         message={
           <div
             style={{
-              padding: '12px',
-              borderLeft: '5px solid ' + color,
-              borderRadius: '4px',
+              padding: '18px',
+              border: '0px solid ' + color,
             }}
           >
             {icon}
@@ -161,10 +161,10 @@ class MySnackbar extends Component {
                 overflowX: 'hidden'
               }}
             >
-              <Typography variant="body1" style={{ fontSize: '12px', color: color }}>
+              <Typography variant="body1" style={{ fontSize: '14px', marginBottom: '6px', fontWeight: '700', color: color }}>
                 {messageType}
               </Typography>
-              <Typography variant="body1" style={{ fontSize: '10px' }}>
+              <Typography variant="body1" style={{ fontSize: '12px' }}>
                 {message}
               </Typography>
             </div>
