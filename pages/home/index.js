@@ -18,7 +18,7 @@ function BalanceIcon(props) {
   const { color, className } = props;
   return (
     <SvgIcon viewBox="0 0 64 64" stroke-width="1" className={className}>
-      <g stroke-width="2" transform="translate(0, 0)"><path data-color="color-2" fill="none" stroke="#4585d6" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M40,28 c0-3.8,6-10,6-10s6,6.2,6,10s-3,6-6,6S40,31.8,40,28z" stroke-linejoin="miter"></path> <path data-color="color-2" fill="none" stroke="#4585d6" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M20,14 c0-3.8,6-10,6-10s6,6.2,6,10s-3,6-6,6S20,17.8,20,14z" stroke-linejoin="miter"></path> <path data-cap="butt" fill="none" stroke="#4585d6" stroke-width="2" stroke-miterlimit="10" d="M10,34h2c4.6,0,9.6,2.4,12,6h8 c4,0,8,4,8,8H22" stroke-linejoin="miter" stroke-linecap="butt"></path> <path data-cap="butt" fill="none" stroke="#4585d6" stroke-width="2" stroke-miterlimit="10" d="M38.8,44H52c7.2,0,8,4,8,4L31.4,59.6 c-2.2,1-4.8,0.8-7-0.2L10,52" stroke-linejoin="miter" stroke-linecap="butt"></path> <rect x="2" y="30" fill="none" stroke="#4585d6" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" width="8" height="26" stroke-linejoin="miter"></rect></g>
+      <g stroke-width="1" transform="translate(0, 0)"><path data-color="color-2" fill="none" stroke="#4585d6" stroke-width="1" stroke-linecap="square" stroke-miterlimit="10" d="M40,28 c0-3.8,6-10,6-10s6,6.2,6,10s-3,6-6,6S40,31.8,40,28z" stroke-linejoin="miter"></path> <path data-color="color-2" fill="none" stroke="#4585d6" stroke-width="1" stroke-linecap="square" stroke-miterlimit="10" d="M20,14 c0-3.8,6-10,6-10s6,6.2,6,10s-3,6-6,6S20,17.8,20,14z" stroke-linejoin="miter"></path> <path data-cap="butt" fill="none" stroke="#4585d6" stroke-width="1" stroke-miterlimit="10" d="M10,34h2c4.6,0,9.6,2.4,12,6h8 c4,0,8,4,8,8H22" stroke-linejoin="miter" stroke-linecap="butt"></path> <path data-cap="butt" fill="none" stroke="#4585d6" stroke-width="1" stroke-miterlimit="10" d="M38.8,44H52c7.2,0,8,4,8,4L31.4,59.6 c-2.2,1-4.8,0.8-7-0.2L10,52" stroke-linejoin="miter" stroke-linecap="butt"></path> <rect x="2" y="30" fill="none" stroke="#4585d6" stroke-width="1" stroke-linecap="square" stroke-miterlimit="10" width="8" height="26" stroke-linejoin="miter"></rect></g>
     </SvgIcon>
   );
 }
@@ -65,14 +65,18 @@ function Home({ changeTheme }) {
 
         {account && account.address ?
           <div className={classes.connected}>
+            <Typography className={classes.mainHeading} variant='h1'>Curve Liquidity Pools</Typography>
+            <Typography className={classes.mainDesc} variant='body2'>
+              Earn Rewards. Providing liquidity to these LP’s allows you to hedge against USD risk, or simply have exposure in your own preferred currency, while earning LP incentives.
+            </Typography>
             <Overview />
             <Assets />
           </div>
            :
            <Paper className={classes.notConnectedContent}>
            <BalanceIcon className={ classes.overviewIcon } />
-           <Typography className={classes.mainHeading} variant='h1'>Curve Liquidity Pools</Typography>
-           <Typography className={classes.mainDesc} variant='body2'>
+           <Typography className={classes.mainHeadingNC} variant='h1'>Curve Liquidity Pools</Typography>
+           <Typography className={classes.mainDescNC} variant='body2'>
              Earn Rewards. Providing liquidity to these LP’s allows you to hedge against USD risk, or simply have exposure in your own preferred currency, while earning LP incentives.
            </Typography>
            <Button

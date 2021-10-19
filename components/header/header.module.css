@@ -16,11 +16,12 @@
 }
 
 .yearnLogo {
-  width: 120px !important;
+  width: 130px !important;
   height: 21px !important;
   left: 20px;
   top: 18px;
   position: absolute;
+  cursor: pointer !important;
 }
 
 .intro {

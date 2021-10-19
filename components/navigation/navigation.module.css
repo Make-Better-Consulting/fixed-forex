@@ -198,7 +198,7 @@ a.linkz { cursor: pointer !important; }
   width: calc(100% - 52px);
   height: 1px;
   background: rgba(104,108,122,0.15);
-  margin: 10px 0 10px 26px;
+  margin: 16px 0 15px 26px;
 }
 
 .sectionText {
