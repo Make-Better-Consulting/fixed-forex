@@ -19,11 +19,12 @@
 	}
 }
 
+
 .assetTitleContainer {
   max-width: 1356px;
   display: flex;
   margin: 0 auto;
-  padding: 60px 40px;
+  padding: 40px 40px;
   align-items: center;
   justify-content: space-between;
   min-height: 100px;

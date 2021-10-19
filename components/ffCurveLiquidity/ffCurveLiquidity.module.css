@@ -1,38 +1,31 @@
-/* .container {
-  width: calc(100% - 48px);
-  max-width: 1356px;
-  display: flex;
-  border: 1px solid rgba(104, 108, 122, 0.25);
-  position: relative;
-  top: -240px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  min-height: 180px;
-} */
-
 .container {
-  width: calc(100% - 180px);
+  /* width: calc(100% - 180px); */
   /* max-width: 1356px; */
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   border: 1px solid rgba(104, 108, 122, 0.25);
   margin: auto;
   padding: 0 0 0px 0px;
+}
+
+.title {
+  font-size: 20px !important;
+  margin-bottom: 24px !important;
+  text-align: left !important;
 }
 
 .topLeftButton {
   border-top-left-radius: 10px !important;
   border-bottom: 1px solid rgba(104, 108, 122, 0.25) !important;
   width: 100%;
-  min-height: 130px;
+  min-height: 70px;
 }
 
 .bottomLeftButton {
   border-bottom-left-radius: 10px !important;
   width: 100%;
-  min-height: 130px;
+  min-height: 70px;
 }
 
 .inputsContainer {
@@ -65,14 +58,27 @@
 }
 
 .activeIcon {
-  height: 10px;
-  width: 10px;
-  background-color: #0ba360;
-  border-radius: 50%;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(-45deg, #23a6d5, #234ce7);
+  background-size: 400% 400%;
+	animation: gradient 35s ease infinite;
   display: inline-block;
   position: absolute;
-  right: 12px;
-  top: 12px;
+  left: 0px;
+  bottom: 0px;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 .inputTitleContainer {
@@ -133,7 +139,7 @@
   display: grid;
   grid-gap: 12px;
   grid-template-columns: 1fr;
-  border-left: 1px solid rgba(104, 108, 122, 0.25);
+  /* border-left: 1px solid rgba(104, 108, 122, 0.25); */
   padding: 0px 24px;
   width: 100%;
   height: 100%;
@@ -164,14 +170,13 @@
 .toggleButtons {
   display: flex;
   flex-direction: column;
-  min-height: 170px;
   width: 100%;
 }
 
 .button {
   border-radius: 0px !important;
   flex: 1;
-  border-right: 1px solid rgba(104, 108, 122, 0.25) !important;
+  border-bottom: 1px solid rgba(104, 108, 122, 0.25) !important;
   transition: none !important;
   opacity: 1;
   color: rgba(104, 108, 122, 0.5) !important;
@@ -184,7 +189,7 @@
 
 .amountAndPercent {
   display: grid;
-  grid-template-columns: 1fr ;
+  grid-template-columns: 1fr;
   grid-column-gap: 12px;
   padding-bottom: 12px;
 }
@@ -193,17 +198,18 @@
   display: grid;
   grid-gap: 12px;
   grid-template-columns: 1fr;
-  border-left: 1px solid rgba(104, 108, 122, 0.25);
   padding: 0px 24px;
   width: 240px;
 }
 
 .extraTF {
-  padding-bottom: 12px;
+  padding-bottom: 0px;
 }
 
 .buttonOverride {
   background: #114DF0 !important;
+  /* border: 3px solid #114DF0 !important;
+  background: none !important; */
   color: #FFF !important;
   font-weight: 700 !important;
   box-shadow: none !important;
@@ -234,7 +240,7 @@
     margin-top: 0px;
   }
 
-  .toggleButtons {
+  /* .toggleButtons {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -256,5 +262,5 @@
 
   .inputsContainer {
     margin-top: -90px;
-  }
+  } */
 }

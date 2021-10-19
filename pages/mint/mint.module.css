@@ -6,7 +6,6 @@
   margin-top: 0px;
   padding-top: 60px;
   position: relative;
-  position: relative;
 }
 
 .notConnectedContent {
@@ -265,11 +264,6 @@
 }
 
 @media screen and (max-width: 1200px) {
-  .overviewContainer2 {
-    top: 0px;
-    margin-bottom: 0px;
-  }
-
   .lendingFilters {
     width: calc(100%);
     display: flex;
@@ -277,8 +271,8 @@
     align-items: center;
     justify-content: space-between;
     margin: 0px;
-    position: sticky;
-    top: 0px;
+    position: fixed;
+    top: 60px;
     left: 0;
     border-radius: 0px !important;
     box-shadow: none !important;
@@ -288,6 +282,10 @@
   .searchContainer {
     border-top: 1px solid rgba(104,108,122,0.2) !important;
     border-bottom: 1px solid rgba(104,108,122,0.2) !important;
+  }
+
+  .ffContainer {
+    padding-top: 220px;
   }
 }
 
@@ -335,5 +333,23 @@
 @media screen and (max-width: 960px) {
   .lendingContainer {
     padding: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .ffContainer {
+    padding-top: 420px;
+  }
+
+  .mainHeading {
+    margin: 90px auto 0px auto !important;
+    text-align: left !important;
+    font-size: 20px !important;
+    width: calc(100% - 80px) !important;
+  }
+
+  .mainDesc {
+    margin: 20px auto 30px auto !important;
+    width: calc(100% - 80px) !important;
   }
 }

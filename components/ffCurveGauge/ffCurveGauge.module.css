@@ -1,5 +1,5 @@
 .container {
-  width: calc(100% - 180px);
+  /* width: calc(100% - 180px); */
   margin: 0 auto;
   margin-top: 40px;
 }
@@ -60,14 +60,27 @@
 }
 
 .activeIcon {
-  height: 10px;
-  width: 10px;
-  background-color: #0ba360;
-  border-radius: 50%;
+  height: 100%;
+  width: 2px;
+  background: linear-gradient(0deg, #23a6d5, #234ce7);
+  background-size: 400% 400%;
+	animation: gradient 35s ease infinite;
   display: inline-block;
   position: absolute;
-  right: 12px;
-  top: 12px;
+  right: 0px;
+  top: 0px;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 .inputTitleContainer {

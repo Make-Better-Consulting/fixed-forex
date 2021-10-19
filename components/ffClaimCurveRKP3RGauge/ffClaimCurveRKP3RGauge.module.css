@@ -1,7 +1,9 @@
 .container {
-  width: calc(100% - 180px);
-  margin: 20px auto;
-  margin-bottom: 60px;
+  width: calc(100%);
+  margin: 0;
+  margin-top: 40px;
+  position: relative;
+  right: 0 !important;
 }
 
 .title {
@@ -10,7 +12,7 @@
 }
 
 .lpOptionsContainer {
-  border: 1px solid rgba(104, 108, 122, 0.25);
+  border: 1px solid rgba(104, 108, 122, 0.2);
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -18,11 +20,10 @@
   cursor: pointer;
 }
 
-.lpOption:nth-child(1):hover {
-  background: linear-gradient(-45deg, #ee7752, #234ce7, #23a6d5, #6623d5);
-	background-size: 600% 600%;
-	animation: gradient 35s ease infinite;
+.lpOptionsContainer:hover {
   border-radius: 10px;
+  border: 1px solid #437ad4;
+  box-sizing: border-box !important;
 }
 
 @keyframes gradient {
@@ -43,26 +44,34 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 48px;
+  padding: 0px;
   transition: background 0.5s ease;
 }
 
 .lpOptionTitle {
   display: flex;
   align-items: center;
+  background: none;
+  border-bottom: 1px solid rgba(104,108,122,0.2);
+  padding: 17px 30px 20px 30px;
+  border-radius: 10px 10px 0px 0px;
 }
 
 .lpOptionName {
-  font-size: 30px !important;
+  font-size: 26px !important;
+  margin: 0 !important;
+  font-weight: 700 !important;
 }
 
 .lpOptionDescription {
-  font-size: 20px !important;
+  font-size: 18px !important;
   opacity: 0.7;
 }
 
 .lpOptionIcon {
-  margin-right: 24px;
+  margin-right: 20px;
+  margin-left: -5px;
+  transform: scale(.7);
 }
 
 .activeIcon {
@@ -80,13 +89,12 @@
   display: flex;
   align-items: center;
   height: 100%;
-}
-
-.lpOption:nth-child(1):hover > div {
-  color: #fff !important;
+  padding: 0px 30px 30px 30px;
+  opacity: 0.5;
 }
 
 .amountText {
-  font-size: 60px !important;
+  font-size: 32px !important;
   font-weight: bold !important;
+  padding: 10px 30px 0px 30px;
 }

@@ -39,6 +39,8 @@
 	animation: gradient 15s ease infinite;
   font-weight: 700 !important;
   color: #FFF !important;
+  text-transform: none !important;
+  font-size: 15px !important;
 }
 
 @keyframes gradient {
@@ -59,6 +61,8 @@
   border-radius: 50px !important;
   font-weight: 700 !important;
   margin-left: 20px !important;
+  text-transform: none !important;
+  font-size: 15px !important;
 }
 
 .blueTxt {
@@ -77,10 +81,10 @@
 }
 
 .welcomeSubtitle {
-  font: normal normal normal 28px/40px Inter Light !important;
+  font: normal normal normal 20px/32px Inter Light !important;
   margin: auto !important;
   margin-bottom: 40px !important;
-  max-width: 1000px;
+  max-width: 1080px;
   opacity: 0.6 !important;
 }
 

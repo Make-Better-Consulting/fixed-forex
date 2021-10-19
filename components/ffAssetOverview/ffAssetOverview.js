@@ -1,4 +1,4 @@
-import { Typography, SvgIcon } from '@material-ui/core';
+import { Typography, SvgIcon, Grid } from '@material-ui/core';
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import BigNumber from 'bignumber.js';
 

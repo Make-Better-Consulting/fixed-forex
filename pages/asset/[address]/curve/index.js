@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
-
+import { Paper, Grid, Typography } from '@material-ui/core';
 import Head from 'next/head';
 import Layout from '../../../../components/layout/layout.js';
 import FfAssetOverview from '../../../../components/ffAssetOverview'
@@ -55,10 +55,21 @@ function Asset({ changeTheme }) {
       </Head>
       <div className={classes.container}>
         <FfAssetOverview asset={ asset } />
-        <FFCurveLiquidity asset={ asset } />
-        <FFCurveGauge asset={ asset } />
-        <FFClaimCurveGauge asset={ asset } />
-        <FFClaimCurveRKP3RGauge asset={ asset } />
+
+
+        <Grid container className={classes.xxxContainer} spacing={0}>
+          <Grid className={classes.xxx} item lg={8} md={12} sm={12} xs={12}>
+            <FFCurveLiquidity asset={ asset } />
+            <FFCurveGauge asset={ asset } />
+          </Grid>
+          <Grid className={classes.xxx2} item lg={4} md={12} sm={12} xs={12}>
+          <FFClaimCurveGauge asset={ asset } />
+          <FFClaimCurveRKP3RGauge asset={ asset } />
+          </Grid>
+        </Grid>
+
+
+
       </div>
     </Layout>
   );

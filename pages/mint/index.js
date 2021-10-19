@@ -443,7 +443,7 @@ function Lend({ changeTheme }) {
            <BalanceIcon className={ classes.overviewIcon } />
            <Typography className={classes.mainHeadingNC} variant='h1'>Mint Assets</Typography>
            <Typography className={classes.mainDescNC} variant='body2'>
-             Supply Collateral to Borrow Iron Bank Assets. Fixed Forex provides an alternative to USD denominated stable coins. It allows liquidity providers exposure to currencies such as EUR, KRW, GBP, CHF, AUD, and JPY.
+             Supply Collateral to Borrow Iron Bank Assets.<br />Fixed Forex provides an alternative to USD denominated stable coins. It allows liquidity providers exposure to currencies such as EUR, KRW, GBP, CHF, AUD, and JPY.
            </Typography>
            <Button
              disableElevation

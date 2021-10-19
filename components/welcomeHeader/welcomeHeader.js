@@ -166,14 +166,16 @@ function Header(props) {
             { props.title }
           </Typography>
         }
+        <a onClick={() => router.push('/')} className={classes.linkz}>
         <SvgIcon
-          viewBox="0 0 150 21"
+          viewBox="0 0 149 26"
           fill="none"
           width="120px"
           height="26px"
           className={classes.yearnLogo}
         >
         <g>
+        	<ellipse fill="#FFFFFF" class="st0" cx="11.1" cy="13" rx="10.9" ry="10.9"/>
         	<g>
         		<rect x="40.2" y="8.7" width="4.4" height="13.9"/>
         		<path d="M32.6,4.9c-0.5,0.7-0.8,1.6-0.8,2.8v1H30v2.8h1.8v11.1h4.4V11.5h2.6V8.7h-2.6V8c0-1.5,1-1.7,2.6-1.6V3.2
@@ -198,10 +200,12 @@ function Header(props) {
         		<polygon points="141.3,15 145.8,8.5 143.9,8.5 140.3,13.9 140.2,13.9 136.5,8.5 134.6,8.5 139.3,15.1 134,22.6 135.9,22.6
         			140.2,16.2 140.3,16.2 144.7,22.6 146.7,22.6 		"/>
         	</g>
-        	<path fill="#2D7DDB" d="M11,24L11,24C4.9,24,0,19.1,0,13v0C0,6.9,4.9,2,11,2h0c6.1,0,11,4.9,11,11v0C22,19.1,17.1,24,11,24z"/>
-        	<circle fill="#FFFFFF" cx="11" cy="13" r="6"/>
+        	<path id="Path_28" fill="#2D7DDB" d="M18.3,12.2l-6.1,7H6.3l6.9-7.9h8.7c-0.2-1.4-0.7-2.8-1.5-4.1h-5.2l-6.1,7H3.2l6.9-7.9h9.7
+        		C16.1,1.5,9.2,0.5,4.3,4.2c-4.8,3.7-5.8,10.6-2.1,15.4c3.7,4.8,10.6,5.8,15.4,2.1c2.7-2.1,4.4-5.3,4.3-8.8c0-0.3,0-0.5,0-0.7
+        		L18.3,12.2z"/>
         </g>
         </SvgIcon>
+        </a>
 
         <div className={classes.themeSelectContainer}>
           <StyledSwitch

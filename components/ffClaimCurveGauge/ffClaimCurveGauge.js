@@ -38,7 +38,7 @@ export default function ffClaimCurveGauge({ asset }) {
       <Paper elevation={0} className={ classes.lpOptionsContainer }>
         <div className={ classes.lpOption } onClick={ () => { claim() } }>
         <Grid container spacing={2}>
-          <Grid item lg={4} md={4} xs={12}>
+          <Grid item lg={12} md={12} xs={12}>
             <div className={ classes.lpOptionTitle }>
               <img className={ classes.lpOptionIcon } src='/images/Curve.png' alt='FF Logo' width={ 60 } height={ 60 } />
               <div>
@@ -47,12 +47,12 @@ export default function ffClaimCurveGauge({ asset }) {
               </div>
             </div>
           </Grid>
-          <Grid item lg={4} md={4} xs={12}>
+          <Grid item lg={12} md={12} xs={12}>
             <div>
               <Typography className={ classes.amountText }>{ formatCurrency(asset && asset.gauge ? asset.gauge.earned : 0) } CRV</Typography>
             </div>
           </Grid>
-          <Grid item lg={4} md={4} xs={12}>
+          <Grid item lg={12} md={12} xs={12}>
             <div className={ classes.center}>
               { BigNumber(asset && asset.gauge ? asset.gauge.earned : 0).gt(0) &&
                 <Typography>Claim Now</Typography>

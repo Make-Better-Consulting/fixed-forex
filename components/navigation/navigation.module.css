@@ -276,10 +276,12 @@ a.linkz { cursor: pointer !important; }
 }
 
 .yearnLogo {
-  width: 120px !important;
-  height: 50px !important;
-  position: relative;
-  margin-top: 0px;
+  width: 130px !important;
+  height: 25px !important;
+  left: 20px;
+  top: 16px;
+  position: absolute;
+  cursor: pointer !important;
 }
 
 .iconHack {
@@ -295,13 +297,14 @@ a.linkz { cursor: pointer !important; }
 
 @media screen and (max-width: 1200px) {
   .navigationContainer {
-    position: relative;
-    min-height: 80px;
+    position: fixed;
+    min-height: 60px;
     display: flex;
     top: 0;
     width: 100%;
     padding: 24px 12px;
     border-radius: 0px !important;
+    z-index: 10020;
   }
   .socials {
     display: none;
@@ -325,9 +328,10 @@ a.linkz { cursor: pointer !important; }
   }
   .menuIcon {
     position: absolute;
-    top: 15px;
-    right: 30px;
+    top: 7px;
+    right: 10px;
     display: flex;
+    transform: scale(0.8);
   }
   .navigationHeading {
     width: 100%;

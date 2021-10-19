@@ -13,8 +13,8 @@
   border: 0;
   margin: auto !important;
   border-radius: 0 !important;
-  /* border-bottom: 1px solid rgba(128, 128, 128, 0.2) !important; */
-  background-color: rgba(0,0,0,0) !important;
+  border-bottom: 1px solid rgba(104, 108, 122, 0.2) !important;
+  background: none !important;
 }
 
 .intro {
@@ -27,11 +27,12 @@
 }
 
 .yearnLogo {
-  width: 120px !important;
-  height: 21px !important;
+  width: 150px !important;
+  height: 40px !important;
   left: 20px;
-  top: 18px;
+  top: 20px;
   position: absolute;
+  cursor: pointer !important;
 }
 
 .aboutmodal dialog {
