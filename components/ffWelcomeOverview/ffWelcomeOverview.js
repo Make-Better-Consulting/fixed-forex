@@ -42,7 +42,18 @@ export default function ffWelcomeOverview() {
       const invalid = stores.accountStore.getStore('chainInvalid');
       setChainInvalid(invalid)
     }
+    stores.dispatcher.register(payload => {
+    
+      switch (payload.type) {
+      case 'CONFIGURE_FIXED_FOREX':
+      if( payload.content.connected===true){
+        router.push('/')
+      }else{
+        router.push('/welcome')
+      }
+    }
 
+    });
 
     const invalid = stores.accountStore.getStore('chainInvalid');
     setChainInvalid(invalid)
