@@ -17,7 +17,7 @@
 
 .lpOptionsContainer {
   /* border: 1px solid rgba(104, 108, 122, 0.25); */
-  border: 3px solid rgba(104,108,122,0.2) !important;
+  border: 3px solid LightSlateGray !important;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -32,8 +32,8 @@
 }
 
 .lpOptionsContainer:hover {
-  -webkit-box-shadow: 0px 5px 0px 0 #2b47cd !important;
-  box-shadow: 0px 5px 0px 0 #2b47cd !important;
+  -webkit-box-shadow: 0px 5px 0px 0 LightSlateGray !important;
+  box-shadow: 0px 5px 0px 0 LightSlateGray !important;
   transform: translate(0px, -3px);
 }
 
@@ -205,7 +205,7 @@
   flex-direction: column;
   /* min-height: 170px; */
   width: 100%;
-  background: rgba(104,108,122,0.2) !important;
+  background: LightSlateGray !important;
 }
 
 .button {
