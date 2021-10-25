@@ -16,9 +16,6 @@ import { CONNECT_WALLET, ACCOUNT_CONFIGURED, ACCOUNT_CHANGED, FIXED_FOREX_BALANC
 
 import Unlock from '../unlock';
 
-import Lottie from "lottie-react";
-import unitato from "../../public/lottiefiles/unitato.json";
-
 import stores from '../../stores';
 import { formatAddress } from '../../utils';
 
