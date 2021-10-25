@@ -55,7 +55,14 @@
 
 @media screen and (max-width: 1200px) {
   .container {
-    top: 192px;
+    width: calc(100% - 80px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border: 1px solid rgba(104, 108, 122, 0.25);
+    margin: auto;
+    margin-bottom: 60px;
+    padding: 0 0 10px 0px;
   }
 }
 

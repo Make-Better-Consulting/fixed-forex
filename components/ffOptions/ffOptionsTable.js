@@ -326,8 +326,7 @@ export default function EnhancedTable({ oKP3ROptions }) {
                 <TableCell className={classes.cell} colspan={5} className={classes.nothingWrap}>
                   <NoneIcon className={ classes.noneIcon } />
                   <Typography className={classes.nothingTitle} variant="h2">No options available.</Typography>
-                  <Typography className={classes.nothingDesc} variant="body2">You can redeem rKP3R for the KP3R CALL option at 50% discount at any time, once created, you have 24 hours to exercise the CALL.</Typography>
-                </TableCell>
+                  </TableCell>
               </TableRow>
             }
             {

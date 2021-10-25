@@ -50,12 +50,12 @@ export default function LendSupplyGraph({ assets }) {
     });
 
   const COLORS = [
-    "#56bdc5",
-    "#4f45cb",
-    "#dc8c39",
-    "#c9438d",
-    "#8f89f3",
-    "#78df7c",
+    "#FFFFFF",
+    "#000000",
+    "#999999",
+    "#CCCCCC",
+    "#444444",
+    "#F1F1F1",
   ];
 
   const onPieEnter = (data, index) => {

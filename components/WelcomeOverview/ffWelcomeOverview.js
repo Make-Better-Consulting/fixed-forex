@@ -42,7 +42,18 @@ export default function ffWelcomeOverview() {
       const invalid = stores.accountStore.getStore('chainInvalid');
       setChainInvalid(invalid)
     }
+    stores.dispatcher.register(payload => {
 
+      switch (payload.type) {
+      case 'CONFIGURE_FIXED_FOREX':
+      if( payload.content.connected===true){
+        router.push('/mint')
+      }else{
+        router.push('/welcome')
+      }
+    }
+
+    });
 
     const invalid = stores.accountStore.getStore('chainInvalid');
     setChainInvalid(invalid)
@@ -77,7 +88,7 @@ export default function ffWelcomeOverview() {
           <Grid item lg={12} md={12} sm={12} xs={12}>
             <Typography variant="h1" className={classes.welcomeTitle}>Welcome to <span className={classes.blueTxt}>Fixed Forex</span></Typography>
             <Typography variant="body2" className={classes.welcomeSubtitle}>
-              Supply Collateral to Borrow Iron Bank Assets. Fixed Forex provides an alternative to USD denominated stable coins. It allows liquidity providers exposure to currencies such as EUR, KRW, GBP, CHF, AUD, and JPY
+              Supply Collateral to Borrow Iron Bank Assets. Fixed Forex provides an alternative to USD denominated stable coins. It allows liquidity providers exposure to currencies such as EUR, KRW, GBP, CHF, AUD, and JPY.
             </Typography>
             <Button
                className={classes.connectBtn}
@@ -88,7 +99,7 @@ export default function ffWelcomeOverview() {
               <Typography className={classes.headBtnTxt}>{account && account.address ? formatAddress(account.address) : 'Connect Wallet'}</Typography>
             </Button>
             {unlockOpen && <Unlock modalOpen={unlockOpen} closeModal={closeUnlock} />}
-            <Button onClick={() => router.push('/')} className={classes.continueBtn}>
+            <Button onClick={() => router.push('/mint')} className={classes.continueBtn}>
               Continue to App
             </Button>
           </Grid>

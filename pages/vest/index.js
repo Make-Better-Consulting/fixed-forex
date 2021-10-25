@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import BigNumber from 'bignumber.js';
-import { Typography, Button, Paper, SvgIcon } from "@material-ui/core";
+import { Typography, Button, Paper, SvgIcon, Grid } from "@material-ui/core";
 import Head from 'next/head';
 import Layout from '../../components/layout/layout.js';
 import Vesting from '../../components/ffVest';
@@ -88,25 +88,28 @@ function Vest({ changeTheme }) {
 
         {account && account.address ?
           <div className={classes.connected}>
-            <Typography className={classes.mainHeading} variant='h1'>Vest</Typography>
-            <Typography className={classes.mainDesc} variant='body2'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-            </Typography>
             <Overview />
-            <Vesting />
-            { !(BigNumber(ibff ? ibff.balance : 0).eq(0) && BigNumber(veIBFF && veIBFF.vestingInfo ? veIBFF.vestingInfo.locked : 0).eq(0)) &&
-              <Claim />
-            }
-            { !(BigNumber(ibff ? ibff.balance : 0).eq(0) && BigNumber(veIBFF && veIBFF.vestingInfo ? veIBFF.vestingInfo.locked : 0).eq(0)) &&
-              <ClaimDistribution />
-            }
+
+            <Grid container spacing={0} className={classes.gridWrapper}>
+              <Grid item lg={8} md={12} sm={12} xs={12}>
+                <Vesting />
+              </Grid>
+              <Grid item lg={4} md={12} sm={12} xs={12} className={classes.xxx}>
+                { !(BigNumber(ibff ? ibff.balance : 0).eq(0) && BigNumber(veIBFF && veIBFF.vestingInfo ? veIBFF.vestingInfo.locked : 0).eq(0)) &&
+                  <Claim />
+                }
+                { !(BigNumber(ibff ? ibff.balance : 0).eq(0) && BigNumber(veIBFF && veIBFF.vestingInfo ? veIBFF.vestingInfo.locked : 0).eq(0)) &&
+                  <ClaimDistribution />
+                }
+              </Grid>
+            </Grid>
           </div>
            :
            <Paper className={classes.notConnectedContent}>
            <BalanceIcon className={ classes.overviewIcon } />
            <Typography className={classes.mainHeadingNC} variant='h1'>Vest</Typography>
            <Typography className={classes.mainDescNC} variant='body2'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+            Vesting your kp3r in the Fixed Forex gauge means that you will be locking up your assets in order to gain a voting right in how the protocol emits rewards.
            </Typography>
            <Button
              disableElevation

@@ -13,8 +13,8 @@
   border: 0;
   margin: auto !important;
   border-radius: 0 !important;
-  /* border-bottom: 1px solid rgba(128, 128, 128, 0.2) !important; */
-  background-color: rgba(0,0,0,0) !important;
+  border-bottom: 1px solid rgba(104, 108, 122, 0.2) !important;
+  background: none !important;
 }
 
 .intro {
@@ -27,11 +27,12 @@
 }
 
 .yearnLogo {
-  width: 120px !important;
-  height: 21px !important;
+  width: 150px !important;
+  height: 40px !important;
   left: 20px;
-  top: 18px;
+  top: 20px;
   position: absolute;
+  cursor: pointer !important;
 }
 
 .aboutmodal dialog {
@@ -160,41 +161,13 @@
   min-width: 100%;
   height: 100vh;
   flex-wrap: wrap;
-  background: rgba(220, 53, 69, 1);
+  background: rgba(26,27,30,0.9);
   z-index: 11 !important;
-  /* BG Animation */
-  -webkit-animation-name:bgAnim;
-  -webkit-animation-duration:40s;
-  -webkit-animation-timing-function:linear;
-  -webkit-animation-delay:0s;
-  -webkit-animation-iteration-count:infinite;
-  -webkit-animation-direction:alternate;
-  -webkit-animation-play-state:running;
-  animation-name:bgAnim;
-  animation-duration:40s;
-  animation-timing-function:linear;
-  animation-delay:0s;
-  animation-iteration-count:infinite;
-  animation-direction:alternate;
-  animation-play-state:running;
 }
 
-@-webkit-keyframes bgAnim
-{
-0%   {background: #cb444a;}
-25%  {background: #3b3350;}
-50%  {background: #1a44f5;}
-75%  {background: #1f1e23;}
-100% {background: #7ca3bc; }
-}
-
-@keyframes bgAnim
-{
-0%   {background: #cb444a; }
-25%  {background: #3b3350; }
-50%  {background: #1a44f5; }
-75%  {background: #1f1e23; }
-100% {background: #7ca3bc; }
+.networkIcon {
+  font-size: 100px !important;
+  margin-bottom: 20px;
 }
 
 .ErrorContent {
@@ -205,16 +178,6 @@
   max-width: 420px;
   line-height: 1.5em !important;
   font-size: 1.4em !important;
-}
-
-.unitato {
-  width: 420px;
-  height: 320px;
-  background-image: url('../../public/images/unitato.png');
-  background-size: 80%;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin-top: -60px;
 }
 
 .shortcutInfo {
