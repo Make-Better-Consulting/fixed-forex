@@ -325,6 +325,7 @@ a.linkz { cursor: pointer !important; }
     z-index: 9;
     align-items: center;
     border-radius: 0 !important;
+    text-align: center !important;
   }
   .menuIcon {
     position: absolute;
@@ -348,5 +349,51 @@ a.linkz { cursor: pointer !important; }
     top: 24px;
     left: 12px;
     display: flex;
+  }
+
+  .subtitleText {
+    padding-left: 0px;
+    font-size: 15px !important;
+    margin: 0 !important;
+    text-align: center !important;
+  }
+
+
+  .navigationOptionSelected,
+  .navigationOptionSelectedWhite {
+    display: none !important;
+  }
+
+  .navigationOptionActive {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    margin: 0px auto !important;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center !important;
+    cursor: pointer;
+    background: radial-gradient(circle, rgba(63,94,251,0.7) 0%, rgba(47,128,237,0.7) 48%) rgba(63,94,251,0.7) 100%;
+  }
+
+  .sectionText {
+    color: rgba(104, 108, 128, 0.8);
+    /* color: #234ce7; */
+    font-size: 13px !important;
+    cursor: default;
+    margin: 0px auto !important;
+    padding: 0 !important;
+    text-align: center !important;
+  }
+
+  .navigationOptionContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0px 0px;
+    width: 100%;
+    cursor: pointer;
   }
 }

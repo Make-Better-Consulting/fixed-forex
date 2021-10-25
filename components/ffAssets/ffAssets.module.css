@@ -16,6 +16,10 @@
   margin: 0 auto;
 }
 
+.assetTableRow {
+  cursor: pointer !important;
+}
+
 @media screen and (max-width: 1200px) {
   .container {
     width: calc(100% - 40px);

@@ -65,7 +65,7 @@ function Home({ changeTheme }) {
 
         {account && account.address ?
           <div className={classes.connected}>
-            <Typography className={classes.mainHeading} variant='h1'>Curve Liquidity Pools</Typography>
+            <Typography className={classes.mainHeading} variant='h1'>CRV Liquidity Providing</Typography>
             <Typography className={classes.mainDesc} variant='body2'>
               Earn Rewards. Providing liquidity to these LP’s allows you to hedge against USD risk, or simply have exposure in your own preferred currency, while earning LP incentives.
             </Typography>

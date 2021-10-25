@@ -54,10 +54,10 @@ export default function ffClaimCurveRKP3RGauge({ asset }) {
           <Grid item lg={12} md={12} xs={12}>
             <div className={ classes.center}>
               { BigNumber(asset && asset.gauge ? asset.gauge.rKP3REarned : 0).gt(0) &&
-                <Typography>Claim Now</Typography>
+                <Typography className={classes.iHazRewardz}>Claim Now</Typography>
               }
               { !BigNumber(asset && asset.gauge ? asset.gauge.rKP3REarned : 0).gt(0) &&
-                <Typography>Stake in gauge to earn rewards</Typography>
+                <Typography className={classes.iHazNoRewardz}>Stake in gauge to earn rewards</Typography>
               }
             </div>
           </Grid>

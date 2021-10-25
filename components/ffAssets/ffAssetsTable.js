@@ -247,7 +247,7 @@ export default function EnhancedTable({ assets }) {
               const labelId = `enhanced-table-checkbox-${index}`;
 
               return (
-                <TableRow key={labelId} className={classes.assetTableRow}>
+                <TableRow key={labelId} className={classes.assetTableRow} onClick={ () => { onView(row) } }>
                   <TableCell className={classes.cell}>
                     <div className={ classes.inline }>
                       <img className={ classes.imgLogo } src={`https://raw.githubusercontent.com/iearn-finance/yearn-assets/master/icons/tokens/${row.address}/logo-128.png`} width='35' height='35' alt='' onError={(e)=>{e.target.onerror = null; e.target.src="/tokens/unknown-logo.png"}} />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Paper, Typography, Button, TextField, InputAdornment, CircularProgress, SvgIcon } from '@material-ui/core';
+import { Paper, Typography, Button, TextField, InputAdornment, CircularProgress, SvgIcon, Grid } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Skeleton from '@material-ui/lab/Skeleton';
 
@@ -62,23 +62,27 @@ export default function ffStakeOverview() {
 
   return (
     <div className={ classes.container }>
-      <div className={ classes.fieldsContainer }>
-        <div className={ classes.field }>
-          <div className={classes.iconWrap}>
-            <BalanceIcon className={ classes.overviewIcon } />
-          </div>
-          <div>
-            <Typography className={ classes.title }>rKP3R Balance:</Typography>
-            <div className={ classes.inline }>
-              <Typography className={ classes.value }>{ formatCurrency(rKP3R ? rKP3R.balance : 0) }</Typography>
-              <Typography className={ classes.valueSymbol }>{ rKP3R ? rKP3R.symbol : '' }</Typography>
+
+      <Grid container spacing={0} className={ classes.fieldsContainer }>
+        <Grid item lg={6} md={6} sm={12} xs={12}>
+          <div className={ classes.field }>
+            <div className={classes.iconWrap}>
+              <BalanceIcon className={ classes.overviewIcon } />
             </div>
+            <div>
+              <Typography className={ classes.title }>rKP3R Balance:</Typography>
+              <div className={ classes.inline }>
+                <Typography className={ classes.value }>{ formatCurrency(rKP3R ? rKP3R.balance : 0) }</Typography>
+                <Typography className={ classes.valueSymbol }>{ rKP3R ? rKP3R.symbol : '' }</Typography>
+              </div>
+            </div>
+            <Button variant='contained' className={ classes.claimButton } onClick={ onClaim } disabled={ loading }>
+              { loading ? `Claiming` : `Claim Now` }
+              { loading && <CircularProgress size={10} className={ classes.loadingCircle } /> }
+            </Button>
           </div>
-          <Button variant='contained' className={ classes.claimButton } onClick={ onClaim } disabled={ loading }>
-            { loading ? `Claiming` : `Claim Now` }
-            { loading && <CircularProgress size={10} className={ classes.loadingCircle } /> }
-          </Button>
-        </div>
+        </Grid>
+        <Grid item lg={6} md={6} sm={12} xs={12}>
         <div className={ classes.field }>
           <div className={classes.iconWrap}>
             <VestedBalanceIcon className={ classes.overviewIcon } />
@@ -91,7 +95,9 @@ export default function ffStakeOverview() {
             </div>
           </div>
         </div>
-      </div>
+        </Grid>
+      </Grid>
+
     </div>
   );
 }

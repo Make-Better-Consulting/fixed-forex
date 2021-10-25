@@ -2,23 +2,18 @@
   width: calc(100% - 180px);
   margin: 40px auto;
   border-radius: 20px;
-  background: linear-gradient(-45deg, #23a6d5, #234ce7);
-	background-size: 600% 600%;
-	animation: gradient 35s ease infinite;
+  background: #234ce7;
+  position: relative;
 }
 
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+.title {
+  /* background: rgba(256, 256, 256, 0.2); */
+  border-radius: 30px;
+  padding: 4px 0px;
+  width: fit-content;
+  color: #fff !important;
+  font-size: 13px !important;
 }
-
 
 .assetTitleContainer {
   max-width: 1356px;
@@ -45,8 +40,8 @@
 }
 
 .iconWrap {
-  width: 80px;
-  height: 80px;
+  min-width: 80px !important;
+  min-height: 80px !important;
   color: #fff;
   border: 1px solid rgba(255,255,255,0.2);
   border-radius: 40px;
@@ -66,10 +61,24 @@
   color: rgba(256, 256, 256, 0.5);
 }
 
+.stakedAmount {
+  font-size: 33px !important;
+  color: rgba(256, 256, 256, 1);
+  font-weight: 700 !important;
+  margin: 0px 0 5px 0 !important;
+}
+
+.assetSymbol {
+  font-size: 13px !important;
+  color: rgba(256, 256, 256, 0.7);
+  margin-top: 5px !important;
+}
+
 .assetBalance {
   display: flex;
   align-items: center;
   min-width: 200px;
+  width: 26%;
 }
 
 .balanceIcon {
@@ -85,11 +94,10 @@
   flex: 1;
 }
 
-.backButton {
-  position: absolute;
-  top: 30px;
-}
-
-.backIcon {
-  color: #fff;
+@media screen and (max-width: 1200px) {
+  .container {
+    width: calc(100%);
+    margin-top: 60px;
+    border-radius: 0;
+  }
 }
