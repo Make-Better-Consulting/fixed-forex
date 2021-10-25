@@ -41,7 +41,7 @@ export default function ffAssetOverview({ asset }) {
           <img className={ classes.assetIcon } src={ asset ? `https://raw.githubusercontent.com/iearn-finance/yearn-assets/master/icons/tokens/${asset.address}/logo-128.png` : '/unknown-logo.png'} alt='' height='60px' width='60px' />
           <div>
             <Typography className={ classes.assetName }>{ asset ? asset.name : '' }</Typography>
-            <Typography className={ classes.assetPrice }>${ formatCurrency(asset ? asset.price : 0) }s</Typography>
+            <Typography className={ classes.assetPrice }>${ formatCurrency(asset ? asset.price : 0) }</Typography>
           </div>
         </div>
         </Grid>
