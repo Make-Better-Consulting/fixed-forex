@@ -2,7 +2,7 @@
   width: calc(100% - 180px);
   margin: 40px auto;
   border-radius: 20px;
-  background: linear-gradient(-45deg, #23a6d5, #234ce7);
+  background: linear-gradient(-45deg, DarkViolet, DarkSlateBlue);
 	background-size: 600% 600%;
 	animation: gradient 35s ease infinite;
 }

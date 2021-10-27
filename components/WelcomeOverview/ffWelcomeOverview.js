@@ -47,7 +47,7 @@ export default function ffWelcomeOverview() {
       switch (payload.type) {
       case 'CONFIGURE_FIXED_FOREX':
       if( payload.content.connected===true){
-        router.push('/mint')
+        router.push('/dashboard')
       }else{
         router.push('/welcome')
       }
@@ -99,7 +99,7 @@ export default function ffWelcomeOverview() {
               <Typography className={classes.headBtnTxt}>{account && account.address ? formatAddress(account.address) : 'Connect Wallet'}</Typography>
             </Button>
             {unlockOpen && <Unlock modalOpen={unlockOpen} closeModal={closeUnlock} />}
-            <Button onClick={() => router.push('/mint')} className={classes.continueBtn}>
+            <Button onClick={() => router.push('/dashboard')} className={classes.continueBtn}>
               Continue to App
             </Button>
           </Grid>

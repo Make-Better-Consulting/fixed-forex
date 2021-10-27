@@ -66,7 +66,7 @@
 }
 
 .buttonConnect {
-  background: linear-gradient(-45deg, #23a6d5, #234ce7);
+  background: linear-gradient(-45deg, DarkViolet, DarkSlateBlue);
 	background-size: 200% 200%;
 	animation: gradient 35s ease infinite;
   color: #FFF !important;

@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { lighten, makeStyles } from '@material-ui/core/styles';
 import Skeleton from '@material-ui/lab/Skeleton';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, Typography, Button, CircularProgress } from '@material-ui/core';
+import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, Typography, Button, CircularProgress } from '@material-ui/core';
 import BigNumber from 'bignumber.js';
-
+import classes from './ffDashboardClaimAll.module.css';
 
 import stores from '../../stores'
 import {
@@ -64,35 +64,6 @@ const headCells = [
   }
 ];
 
-function EnhancedTableHead(props) {
-  const { classes, order, orderBy, onRequestSort } = props;
-  const createSortHandler = (property) => (event) => {
-    onRequestSort(event, property);
-  };
-
-  return (
-    <TableHead>
-      <TableRow>
-        {headCells.map((headCell) => (
-          <TableCell className={classes.overrideTableHead} key={headCell.id} align={headCell.numeric ? 'right' : 'left'} padding={'normal'} sortDirection={orderBy === headCell.id ? order : false}>
-            <TableSortLabel active={orderBy === headCell.id} direction={orderBy === headCell.id ? order : 'asc'} onClick={createSortHandler(headCell.id)}>
-              <Typography variant="h5">{headCell.label}</Typography>
-              {orderBy === headCell.id ? <span className={classes.visuallyHidden}>{order === 'desc' ? 'sorted descending' : 'sorted ascending'}</span> : null}
-            </TableSortLabel>
-          </TableCell>
-        ))}
-      </TableRow>
-    </TableHead>
-  );
-}
-
-EnhancedTableHead.propTypes = {
-  classes: PropTypes.object.isRequired,
-  onRequestSort: PropTypes.func.isRequired,
-  order: PropTypes.oneOf(['asc', 'desc']).isRequired,
-  orderBy: PropTypes.string.isRequired,
-};
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -113,16 +84,16 @@ const useStyles = makeStyles((theme) => ({
     width: 1,
   },
   inline: {
-    display: 'flex',
-    alignItems: 'center',
   },
   icon: {
     marginRight: '12px',
   },
   textSpaced: {
-    lineHeight: '1.5',
+    lineHeight: '1.4',
   },
-  cell: {},
+  cell: {
+
+  },
   cellSuccess: {
     color: '#4eaf0a',
   },
@@ -193,17 +164,19 @@ const useStyles = makeStyles((theme) => ({
     color: 'green',
   },
   imgLogo: {
-    marginRight: '12px'
+    marginRight: '0px'
   },
   tableContainer: {
-    overflowX: 'hidden'
+    width: '100%',
   },
   buttonOverride: {
     boxShadow: 'none !important',
-    minWidth: '235px',
-    marginTop: '15px',
+    minWidth: '100%',
     background: 'gold',
     color: '#000',
+    padding: '12px 24px !important',
+    borderRadius: '40px !important',
+    marginLeft: '-25px',
   },
   actionButtonText: {
     fontWeight: '700 !important',
@@ -216,6 +189,20 @@ const useStyles = makeStyles((theme) => ({
   },
   overrideTableHead: {
     borderBottom: '1px solid rgba(104,108,122,0.2) !important',
+  },
+  alignR: {
+    position: 'relative',
+  },
+  endAsset: {
+    minWidth: '240px',
+    marginTop: '10px',
+    marginLeft: '40px',
+  },
+  divider: {
+    height: '1px',
+    minWidth: '100%',
+    background: 'rgba(104,108,122,0.2)',
+    marginTop: '20px',
   },
 }));
 
@@ -283,10 +270,11 @@ export default function EnhancedTable({ claimable, crv, ibEUR, rKP3R }) {
   }
 
   return (
-    <div className={classes.root}>
+    <div>
+
+
       <TableContainer className={ classes.tableContainer }>
         <Table className={classes.table} aria-labelledby="tableTitle" size={'medium'} aria-label="enhanced table">
-          <EnhancedTableHead classes={classes} order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
           <TableBody>
             {stableSort(claimable, getComparator(order, orderBy)).map((row) => {
               if (!row) {
@@ -296,57 +284,100 @@ export default function EnhancedTable({ claimable, crv, ibEUR, rKP3R }) {
               return (
                 <TableRow key={row.type+'_'+row.description}>
                   <TableCell className={classes.cell}>
-                    <div className={ classes.inline }>
-                      {
-                        row?.type === 'Fixed Forex' && <img className={ classes.imgLogo } src={`/images/ff-icon.svg`} width='35' height='35' alt='' />}
-                      {
-                        row?.type !== 'Fixed Forex' && <img className={ classes.imgLogo } src={`https://raw.githubusercontent.com/iearn-finance/yearn-assets/master/icons/tokens/${row.address}/logo-128.png`} width='35' height='35' alt='' />
-                      }
-                      <div>
-                        <Typography variant="h2" className={classes.textSpaced}>
-                          { row?.type }
-                        </Typography>
-                        <Typography variant="h5" className={classes.textSpaced} color='textSecondary'>
-                          { row?.description }
-                        </Typography>
-                      </div>
-                    </div>
-                  </TableCell>
-                  <TableCell className={classes.cell} align="right">
-                    <Typography variant="h2" className={classes.textSpaced}>
-                      { formatCurrency(row?.earned) } { row.symbol }
-                    </Typography>
-                    <Typography variant="h5" className={classes.textSpaced} color='textSecondary'>
-                      ${
-                        row.symbol === 'CRV' &&
-                        formatCurrency(BigNumber(row?.earned).times(crv?.price))
-                      }
-                      {
-                        row.symbol === 'ibEUR' &&
-                        formatCurrency(BigNumber(row?.earned).times(ibEUR?.price))
-                      }
-                      {
-                        (row.symbol === 'rKP3R' || row.symbol === 'kp3R') &&
-                        formatCurrency(BigNumber(row?.earned).times(rKP3R?.price))
 
-                      }
-                      {
-                        !['CRV', 'ibEUR', 'rKP3R', 'kp3R'].includes(row.symbol) &&
-                        formatCurrency(0)
-                      }
-                    </Typography>
+                    <div>
+
+                      <Grid container spacing={0}>
+
+                        <Grid item lg={12} md={12} sm={12} xs={12} className={classes.endAsset}>
+
+                          <Grid container spacing={0}>
+
+                            <Grid item lg={3} md={2} sm={2} xs={2}>
+                              {
+                              row?.type === 'Fixed Forex' && <img className={ classes.imgLogo } src={`/images/ff-icon.svg`} width='35' height='35' alt='' />}
+                              {
+                              row?.type !== 'Fixed Forex' && <img className={ classes.imgLogo } src={`https://raw.githubusercontent.com/iearn-finance/yearn-assets/master/icons/tokens/${row.address}/logo-128.png`} width='35' height='35' alt='' />
+                              }
+                            </Grid>
+
+                            <Grid item lg={9} md={10} sm={10} xs={10}>
+                              <Typography variant="h2" className={classes.textSpaced}>
+                              { row?.type }
+                              </Typography>
+                              <Typography variant="h5" className={classes.textSpaced} color='textSecondary'>
+                              { row?.description }
+                              </Typography>
+                            </Grid>
+
+                          </Grid>
+
+                        </Grid>
+
+                        <Grid item lg={12} md={12} sm={12} xs={12} className={classes.endAsset}>
+
+                          <Grid container spacing={0}>
+
+                            <Grid item lg={9} md={9} sm={9} xs={9}>
+                              <Typography variant="h2" className={classes.textSpaced}>
+                                { formatCurrency(row?.earned) } { row.symbol }
+                              </Typography>
+                              <Typography variant="h5" className={classes.textSpaced} color='textSecondary'>
+                                ${
+                                  row.symbol === 'CRV' &&
+                                  formatCurrency(BigNumber(row?.earned).times(crv?.price))
+                                }
+                                {
+                                  row.symbol === 'ibEUR' &&
+                                  formatCurrency(BigNumber(row?.earned).times(ibEUR?.price))
+                                }
+                                {
+                                  (row.symbol === 'rKP3R' || row.symbol === 'kp3R') &&
+                                  formatCurrency(BigNumber(row?.earned).times(rKP3R?.price))
+
+                                }
+                                {
+                                  !['CRV', 'ibEUR', 'rKP3R', 'kp3R'].includes(row.symbol) &&
+                                  formatCurrency(0)
+                                }
+                              </Typography>
+                            </Grid>
+
+                            <Grid item lg={3} md={3} sm={3} xs={3} className={classes.alignR}>
+                              <Button
+                                className={ classes.buttonOverride }
+                                variant='contained'
+                                size='large'
+                                color='primary'
+                                disabled={ claimLoading }
+                                onClick={ () => { onClaim(row) } }>
+                                <Typography className={ classes.actionButtonText }>{ claimLoading ? `Claiming` : `Claim` }</Typography>
+                                { claimLoading && <CircularProgress size={10} className={ classes.loadingCircle } /> }
+                              </Button>
+
+                            </Grid>
+
+                            <div className={classes.divider}></div>
+
+                          </Grid>
+
+                        </Grid>
+
+                      </Grid>
+
+
+                    </div>
+
+
+                    <div>
+
+
+                  </div>
+
                   </TableCell>
-                  <TableCell className={classes.cell} align="right">
-                    <Button
-                      className={ classes.buttonOverride }
-                      variant='contained'
-                      size='large'
-                      color='primary'
-                      disabled={ claimLoading }
-                      onClick={ () => { onClaim(row) } }>
-                      <Typography className={ classes.actionButtonText }>{ claimLoading ? `Claiming` : `Claim` }</Typography>
-                      { claimLoading && <CircularProgress size={10} className={ classes.loadingCircle } /> }
-                    </Button>
+                  <TableCell className={classes.cell} align="left">
+
+
                   </TableCell>
                 </TableRow>
               );

@@ -132,6 +132,14 @@ function Navigation(props) {
     return (
       <React.Fragment>
         {renderNav(
+          'Dashboard',
+          'dashboard',
+        )}
+        <div className={classes.sectionDivider}></div>
+        {renderSectionHeader(
+          'Collateral'
+        )}
+        {renderNav(
           'Mint Assets',
           'mint',
         )}

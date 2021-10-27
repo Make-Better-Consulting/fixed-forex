@@ -180,7 +180,7 @@ function Header(props) {
           </Typography>
         }
 
-        <a onClick={() => router.push('/mint')} className={classes.linkz}>
+        <a onClick={() => router.push('/dashboard')} className={classes.linkz}>
         <SvgIcon
           viewBox="0 0 149 26"
           fill="none"
