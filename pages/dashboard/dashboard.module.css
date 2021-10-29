@@ -120,12 +120,18 @@
   margin-top: -80px;
 }
 
-.mainHeading {
+.mainHeading,
+.mainHeadingTop,
+.mainHeadingRewards {
   margin: 40px 0 20px 0 !important;
   text-align: left !important;
   font-size: 20px !important;
   float: left;
   /* width: calc(100% - 180px) !important; */
+}
+
+.mainHeadingRewards {
+  margin: 40px 0 38px 0 !important;
 }
 
 .mainDesc {
@@ -182,9 +188,16 @@
     padding-top: 0px;
   }
 
-  .mainHeading {
+  .mainHeading,
+  .mainHeadingRewards {
     margin: 30px auto 40px auto !important;
     width: calc(100% - 80px) !important;
+  }
+  .viewCollateral,
+  .viewVesting,
+  .viewVoting,
+  .viewRewards {
+    float: right;
   }
 }
 
@@ -196,6 +209,30 @@
 }
 
 @media screen and (max-width: 600px) {
+  .mainHeadingTop {
+    margin: 80px 0 0px 0 !important;
+    text-align: left !important;
+    font-size: 20px !important;
+  }
+
+  .viewCollateral {
+    margin: 80px 0 0px 15px !important;
+    float: right;
+  }
+
+  .mainHeading {
+    margin: 0px 0 0px 0 !important;
+    text-align: left !important;
+    font-size: 20px !important;
+  }
+
+  .viewVesting,
+  .viewVoting,
+  .viewRewards {
+    margin: 0px 0 0px 15px !important;
+    float: right;
+  }
+
   .mainHeadingNC {
     text-align: center !important;
     font-size: 24px !important;
@@ -208,5 +245,16 @@
 
   .overviewIcon {
     font-size: 80px !important;
+  }
+
+  .connected {
+    width: calc(100% - 60px);
+    margin: 0 auto;
+    padding-top: 0px;
+    margin-bottom: 130px;
+  }
+
+  .accountInfo {
+    display: none;
   }
 }

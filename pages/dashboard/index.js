@@ -97,7 +97,7 @@ function Rewards({ changeTheme }) {
               <Grid item lg={9} md={12} sm={12} xs={12}>
                 <Grid container spacing={0}>
                   <Grid item lg={12} md={12} sm={12} xs={12}>
-                    <Typography className={classes.mainHeading} variant='h1'>Collateral</Typography>
+                    <Typography className={classes.mainHeadingTop} variant='h1'>Collateral</Typography>
                     <Paper elevation={0} onClick={() => router.push('/mint')} className={classes.viewCollateral}>View</Paper>
                     <MintOverview />
                   </Grid>
@@ -117,7 +117,7 @@ function Rewards({ changeTheme }) {
               </Grid>
 
               <Grid item lg={3} md={12} sm={12} xs={12}>
-              <Typography className={classes.mainHeading} variant='h1'>Rewards</Typography>
+              <Typography className={classes.mainHeadingRewards} variant='h1'>Rewards</Typography>
               <ClaimAll />
               </Grid>
 
