@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import { Typography, Button, Paper, SvgIcon, Grid, Avatar } from "@material-ui/core";
 import Layout from '../../components/layout/layout.js';
-import ClaimAll from '../../components/ffDashboardClaimAll';
+import MintOverview from '../../components/ffDashboardMintOverview';
 import Overview from '../../components/ffDashboardOverview';
 import VoteOverview from '../../components/ffDashboardVoteOverview';
-import MintOverview from '../../components/ffDashboardMintOverview';
+import ClaimAll from '../../components/ffDashboardClaimAll';
 
 import classes from './dashboard.module.css';
 
