@@ -18,6 +18,7 @@
 .overviewIcon {
   font-size: 60px !important;
   margin-bottom: 20px;
+  opacity: 0.4;
 }
 
 .centerGridRows {
